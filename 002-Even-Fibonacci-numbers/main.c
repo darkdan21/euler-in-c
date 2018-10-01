@@ -24,6 +24,6 @@ void nextfibsum(int * total, int * current, int * previous){
     }
     int temp = *current;
 
-     *current = *current + *previous;
-     *previous = temp;
+    *current = *current + *previous;
+    *previous = temp;
 }
