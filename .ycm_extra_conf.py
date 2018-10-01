@@ -2,7 +2,7 @@ flags = [
   '-Wall',
   '-Wextra',
   '-Werror',
-  '-std=c99',
+  '-std=c11',
   '-isystem/usr/include/',
   '-Wno-unused-variable',
   '-Wno-unused-parameter'
