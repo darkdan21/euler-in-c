@@ -1,5 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+#include "shared.h"
+#include <string.h>
 
 int ismultiple(int x, int y){
     return x % y;
@@ -76,4 +79,30 @@ int divisorcheckfuncprint(void * number, void * item){
         printf("%d is a factor of %lld\n",i,x);
     }
     return 0;
+}
+int ispalindrome(long long x){
+    char * number = tostring(x);
+    char * dest = tostring(x);
+
+    for(size_t i = 0; i<strlen(number); i++){
+        dest[i] = number[strlen(number)-i-1];
+    }
+    if(strcmp(number,dest)==0){
+        free(number);
+        free(dest);
+        return 0;
+    }
+    free(number);
+    free(dest);
+    return 1;
+}
+
+char * tostring(long long x){
+    int i = floor(log10l((long double)x))+1;
+
+    char * string = calloc(i+1,sizeof(char));
+
+    snprintf(string,i+1,"%lld",x);
+
+    return string;
 }

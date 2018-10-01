@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../lib/shared.h"
+#include "../lib/shared.c"
 
 
 int main(int argc, char** argv){
