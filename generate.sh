@@ -59,10 +59,14 @@ while IFS='' read -r line; do
         line=${line::-1}
         echo $line
         mkdir $line
-        cat ./boilerplate-generator/boilerplate.c | sed 's/#PROBLEM#/'$number'/g' > $line/main.c
+        #find boilerplate/* -exec cat {} | sed 's/#PROBLEM#/'$number'/g' > "$line/$(basename {})"; \;
+
+        find boilerplate/* | while read fn; do out="$line/$(basename $fn)"; cp "$fn" "$out"; sed -i 's/#PROBLEM#/'$number'/g' "$out"; done
+
+        #cat ./boilerplate/boilerplate.c | sed 's/#PROBLEM#/'$number'/g' > $line/main.c
 
         exit
     fi
-done < ./boilerplate-generator/problem-list
+done < ./problem-list
 
 echo "Problem not found, update list"
